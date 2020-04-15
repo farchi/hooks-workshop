@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Hooks Workshop
+
+The V1 to V5 folders contain the code that was shown in each step of the workshop. Each one contains the class version and the hooks version. V4 also contains 2 variant with hooks, one using two useState calls vs the other using useReducer.
+
+You can set which version you want to see by changing the imports in src/index.js
+
+The `shared` folder contains our fake API, and our ColorSubscriptions helper module which we used to illustrate different effects.
+
+The `extraExamples` folder contains some components we experimented with but didnt make it to the presentation. Use at your own risk.
+
 ## Available Scripts
 
 In the project directory, you can run:
