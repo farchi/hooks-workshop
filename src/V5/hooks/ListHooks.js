@@ -1,16 +1,16 @@
 import React from "react";
-import useColor from './useColor'
+// import useColor from './useColor'
 
 function List(props) {
   const { list, selectedItemId, selectItem, isFetching } = props;
   
-  const color = useColor()
+  // const color = useColor()
   
   if (isFetching || !list) {
     return <div className="bg-gray-200 p-4 w-48 text-center rounded">Loading...</div>;
   }
   return (
-    <div className="bg-gray-400 p-4 w-48 text-center rounded" style={{ backgroundColor: color }}>
+    <div className="bg-gray-400 p-4 w-48 text-center rounded" /* style={{ backgroundColor: color }} */>
       {list.map((item) => {
         return (
           <div

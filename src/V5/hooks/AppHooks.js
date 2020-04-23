@@ -46,9 +46,9 @@ const App = () => {
           <FormHooks onSubmit={fetchAllItems} id={selectedItemId} />
         </div>
       </div>
-      <div className="p-8">
+      {/* <div className="p-8">
         <ColorPicker />
-      </div>
+      </div> */}
     </div>
   );
 };

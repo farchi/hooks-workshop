@@ -42,7 +42,7 @@ const App = () => {
             list={list} selectedItemId={selectedItemId} />
         </div>
         <div className="p-8">
-          <FormHooks onSubmit={fetchAllItems} id={selectedItemId} />
+          <FormHooks onSubmit={fetchAllItems} /* id={selectedItemId} */ />
         </div>
       </div>
     </div>

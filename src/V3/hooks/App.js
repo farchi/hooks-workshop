@@ -16,17 +16,17 @@ const App = () => {
     document.title = selectedItemId || "Nada"
   });
 
-  const fetchAllItems = () => {
-    setIsFetching(true)
-    getAll().then((list) => {
-      setList(list)
-      setIsFetching(false)
-    });
-  }
+  // const fetchAllItems = () => {
+  //   setIsFetching(true)
+  //   getAll().then((list) => {
+  //     setList(list)
+  //     setIsFetching(false)
+  //   });
+  // }
 
-  useEffect(() => {
-    fetchAllItems()
-  }, [])
+  // useEffect(() => {
+  //   fetchAllItems()
+  // }, [])
 
   const selectItem = (id) => {
     setSelectedItemId(id === selectedItemId ? null : id);
@@ -39,9 +39,9 @@ const App = () => {
         <div className="p-8">
           <List selectItem={selectItem} isFetching={isFetching} list={list} selectedItemId={selectedItemId} />
         </div>
-        <div className="p-8">
+        {/* <div className="p-8">
           <Form onSubmit={fetchAllItems} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

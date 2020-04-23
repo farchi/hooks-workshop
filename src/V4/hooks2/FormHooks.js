@@ -6,22 +6,22 @@ const formInitialState = {
   someField: "",
 };
 
-const reducer = (state, values) => {
-  return { ...state, ...values }
-}
+// const reducer = (state, values) => {
+//   return { ...state, ...values }
+// }
 
 const FormHooks = ({ onSubmit, id }) => {
   const [isFetching, setIsFetching] = useState(false)
-  const [formState, formDispatch] = useReducer(reducer, formInitialState);
+  // const [formState, formDispatch] = useReducer(reducer, formInitialState);
 
   const onButtonSubmit = () => {
     const isNew = !id;
-    const promise = isNew ? create(formState) : update({ ...formState, id });
+    // const promise = isNew ? create(formState) : update({ ...formState, id });
     promise.then((response) => {
       if (response) {
         onSubmit();
         if (isNew) {
-          formDispatch(formInitialState)
+          // formDispatch(formInitialState)
         }
         alert("Success!");
       }
@@ -32,17 +32,17 @@ const FormHooks = ({ onSubmit, id }) => {
     if (id) {
       fetchCurrentElement(id);
     } else {
-      formDispatch(formInitialState)
+      // formDispatch(formInitialState)
     }
   },[id])
 
   const fetchCurrentElement = (id) => {
     setIsFetching(true);
     get(id).then((response) => {
-      formDispatch({
-        name: response.name,
-        someField: response.someField,
-      })
+      // formDispatch({
+      //   name: response.name,
+      //   someField: response.someField,
+      // })
       setIsFetching(false)
     });
   }
@@ -50,7 +50,7 @@ const FormHooks = ({ onSubmit, id }) => {
   const onValueChange = (event) => {
     const value = event.target.value;
     const field = event.target.dataset.field;
-    formDispatch({ [field]: value });
+    // formDispatch({ [field]: value });
   }
  
   if (isFetching) return <div>Loading...</div>;
@@ -62,9 +62,9 @@ const FormHooks = ({ onSubmit, id }) => {
         <input
           id="name"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300"
-          value={formState.name}
+          // value={formState.name}
           data-field="name"
-          onChange={onValueChange}
+          // onChange={onValueChange}
         />
       </label>
       <label htmlFor="someField">
@@ -72,9 +72,9 @@ const FormHooks = ({ onSubmit, id }) => {
         <input
           id="someField"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300"
-          value={formState.someField}
+          // value={formState.someField}
           data-field="someField"
-          onChange={onValueChange}
+          // onChange={onValueChange}
         />
       </label>
       <div className="mt-3 w-full flex items-center">

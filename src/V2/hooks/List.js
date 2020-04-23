@@ -1,9 +1,9 @@
 import React from "react";
 
 const List = ({ selectItem, isFetching, list, selectedItemId }) => {
-  if (isFetching || !list) {
-    return <div className="bg-gray-200 p-4 w-48 text-center rounded">Loading...</div>;
-  }
+  // if (isFetching || !list) {
+  //   return <div className="bg-gray-200 p-4 w-48 text-center rounded">Loading...</div>;
+  // }
   return (
     <div className="bg-gray-400 p-4 w-48 text-center rounded">
       {list.map((item) => {

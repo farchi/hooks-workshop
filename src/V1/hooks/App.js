@@ -10,7 +10,7 @@ const list = [
 ]
 
 const App = () => {
-  const [selectedItemId, setSelectedItemId] = useState(null)
+  // const [selectedItemId, setSelectedItemId] = useState(null)
 
   return (
     <div className="flex justify-between">
@@ -19,8 +19,8 @@ const App = () => {
         <div className="p-8">
           <List
             list={list}
-            selectItem={setSelectedItemId}
-            selectedItemId={selectedItemId}
+            // selectItem={setSelectedItemId}
+            // selectedItemId={selectedItemId}
           />
         </div>
       </div>

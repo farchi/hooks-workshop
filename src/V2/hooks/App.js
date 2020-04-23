@@ -7,25 +7,25 @@ import { getAll } from "../../shared/api";
 import "../../styles/main.css";
 
 const App = () => {
-  const [isFetching, setIsFetching] = useState(false)
-  const [list, setList] = useState(null)
+  // const [isFetching, setIsFetching] = useState(false)
+  // const [list, setList] = useState(null)
   const [selectedItemId, setSelectedItemId] = useState(null)
 
-  useEffect(() => {
-    document.title = selectedItemId || "Nada"
-  });
+  // useEffect(() => {
+  //   document.title = selectedItemId || "Nada"
+  // });
 
-  useEffect(() => {
-    setIsFetching(true);
-    getAll().then((list) => {
-      setList(list)
-      setIsFetching(false)
-    });
-  }, [])
+  // useEffect(() => {
+  //   setIsFetching(true);
+  //   getAll().then((list) => {
+  //     setList(list)
+  //     setIsFetching(false)
+  //   });
+  // }, [])
 
-  const selectItem = (id) => {
-    setSelectedItemId(id === selectedItemId ? null : id);
-  }
+  // const selectItem = (id) => {
+  //   setSelectedItemId(id === selectedItemId ? null : id);
+  // }
 
   return (
     <div className="flex justify-between">
@@ -34,8 +34,8 @@ const App = () => {
         <div className="p-8">
           <List
             list={list}
-            selectItem={selectItem}
-            isFetching={isFetching}
+            // selectItem={selectItem}
+            // isFetching={isFetching}
             selectedItemId={selectedItemId}
           />
         </div>
