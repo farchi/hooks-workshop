@@ -18,22 +18,6 @@ const FormHooks = ({ onSubmit, id }) => {
 
   const nameInputRef = useRef();
 
-  // TODO move this after the useEffect
-  // TODO loading? disable submit?
-  const onButtonSubmit = () => {
-    const isNew = !id; // TODO move outside, use everywhere where `if (id)` or `id ?` is used
-    const promise = isNew ? create(formState) : update({ ...formState, id });
-    promise.then((response) => {
-      if (response) {
-        onSubmit();
-        if (isNew) {
-          formDispatch(formInitialState)
-        }
-        alert("Success!");
-      }
-    });
-  }
-
   useEffect(() => {
     if (id) {
       fetchCurrentElement(id);
@@ -63,6 +47,21 @@ const FormHooks = ({ onSubmit, id }) => {
   }
 
   if (isFetching) return <div>Loading...</div>;
+
+  // TODO loading? disable submit?
+  const onButtonSubmit = () => {
+    const isNew = !id; // TODO move outside, use everywhere where `if (id)` or `id ?` is used
+    const promise = isNew ? create(formState) : update({ ...formState, id });
+    promise.then((response) => {
+      if (response) {
+        onSubmit();
+        if (isNew) {
+          formDispatch(formInitialState)
+        }
+        alert("Success!");
+      }
+    });
+  }
 
   return (
     <div className="w-64 p-8" style={{ backgroundColor: color }}>

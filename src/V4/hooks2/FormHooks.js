@@ -14,20 +14,6 @@ const FormHooks = ({ onSubmit, id }) => {
   const [isFetching, setIsFetching] = useState(false)
   // const [formState, formDispatch] = useReducer(reducer, formInitialState);
 
-  const onButtonSubmit = () => {
-    const isNew = !id;
-    // const promise = isNew ? create(formState) : update({ ...formState, id });
-    promise.then((response) => {
-      if (response) {
-        onSubmit();
-        if (isNew) {
-          // formDispatch(formInitialState)
-        }
-        alert("Success!");
-      }
-    });
-  }
-
   useEffect(() => {
     if (id) {
       fetchCurrentElement(id);
@@ -52,9 +38,23 @@ const FormHooks = ({ onSubmit, id }) => {
     const field = event.target.dataset.field;
     // formDispatch({ [field]: value });
   }
- 
+
   if (isFetching) return <div>Loading...</div>;
-  
+
+  const onButtonSubmit = () => {
+    const isNew = !id;
+    // const promise = isNew ? create(formState) : update({ ...formState, id });
+    promise.then((response) => {
+      if (response) {
+        onSubmit();
+        if (isNew) {
+          // formDispatch(formInitialState)
+        }
+        alert("Success!");
+      }
+    });
+  }
+
   return (
     <div className="w-64 p-8">
       <label htmlFor="name">

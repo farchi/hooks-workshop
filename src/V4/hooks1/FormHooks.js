@@ -11,22 +11,6 @@ const FormHooks = ({ onSubmit, id }) => {
   const [name, setName] = useState(formInitialState.name);
   const [someField, setSomeField] = useState(formInitialState.someField);
 
-  const onButtonSubmit = () => {
-    const fields = { name, someField };
-    // const isNew = !id;
-    // const promise = isNew ? create(fields) : update({ ...fields, id });
-    promise.then((response) => {
-      if (response) {
-        onSubmit();
-        // if (isNew) {
-        //   setName(formInitialState.name);
-        //   setSomeField(formInitialState.someField);
-        // }
-        alert("Success!");
-      }
-    });
-  }
-
   // useEffect(() => {
   //   if (id) {
   //     fetchCurrentElement(id);
@@ -44,9 +28,25 @@ const FormHooks = ({ onSubmit, id }) => {
   //     setIsFetching(false)
   //   });
   // }
-  
+
   // if (isFetching) return <div>Loading...</div>;
-  
+
+  const onButtonSubmit = () => {
+    const fields = { name, someField };
+    // const isNew = !id;
+    // const promise = isNew ? create(fields) : update({ ...fields, id });
+    promise.then((response) => {
+      if (response) {
+        onSubmit();
+        // if (isNew) {
+        //   setName(formInitialState.name);
+        //   setSomeField(formInitialState.someField);
+        // }
+        alert("Success!");
+      }
+    });
+  }
+
   return (
     <div className="w-64 p-8">
       <label htmlFor="name">

@@ -17,7 +17,6 @@ const App = () => {
     document.title = selectedItemId || "Nada"
   });
 
-  // TODO this should be _in_ the effect
   const fetchAllItems = () => {
     setIsFetching(true)
     getAll().then((list) => {
