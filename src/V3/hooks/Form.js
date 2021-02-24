@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { create } from "../../shared/api";
+import React, { useState } from 'react';
+import { create } from '../../shared/api';
 
 const formInitialState = {
-  name: "",
-  someField: "",
+  name: '',
+  someField: '',
 };
 
 const Form = ({ onSubmit }) => {
@@ -17,10 +17,10 @@ const Form = ({ onSubmit }) => {
         onSubmit();
         // setName(formInitialState.name)
         // setSomeField(formInitialState.someField)
-        alert("Success!");
+        alert('Success!');
       }
     });
-  }
+  };
 
   return (
     <div className="w-64 p-8">
@@ -55,7 +55,6 @@ const Form = ({ onSubmit }) => {
       </div>
     </div>
   );
-  
-}
+};
 
 export default Form;

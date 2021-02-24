@@ -1,11 +1,14 @@
-import React from "react";
-import { SketchPicker } from "react-color";
-import * as ColorSubscriptions from "./ColorSubscriptions";
+import React from 'react';
+import { SketchPicker } from 'react-color';
+import * as ColorSubscriptions from './ColorSubscriptions';
 
 export default class Component extends React.Component {
-  state = {
-    background: "#fff",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      background: '#fff',
+    };
+  }
 
   handleChangeComplete = (color) => {
     this.setState({ background: color.hex });

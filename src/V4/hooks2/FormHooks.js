@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { get, create, update } from "../../shared/api";
+import React, { useState, useEffect, useReducer } from 'react';
+import { get, create, update } from '../../shared/api';
 
 const formInitialState = {
-  name: "",
-  someField: "",
+  name: '',
+  someField: '',
 };
 
 // const reducer = (state, values) => {
@@ -11,7 +11,7 @@ const formInitialState = {
 // }
 
 const FormHooks = ({ onSubmit, id }) => {
-  const [isFetching, setIsFetching] = useState(false)
+  const [isFetching, setIsFetching] = useState(false);
   // const [formState, formDispatch] = useReducer(reducer, formInitialState);
 
   useEffect(() => {
@@ -22,22 +22,22 @@ const FormHooks = ({ onSubmit, id }) => {
         //   name: response.name,
         //   someField: response.someField,
         // })
-        setIsFetching(false)
+        setIsFetching(false);
       });
-    }
+    };
 
     if (id) {
       fetchSelectedItem();
     } else {
       // formDispatch(formInitialState)
     }
-  },[id])
+  }, [id]);
 
   const onValueChange = (event) => {
-    const value = event.target.value;
-    const field = event.target.dataset.field;
+    const { value } = event.target;
+    const { field } = event.target.dataset;
     // formDispatch({ [field]: value });
-  }
+  };
 
   if (isFetching) return <div>Loading...</div>;
 
@@ -50,10 +50,10 @@ const FormHooks = ({ onSubmit, id }) => {
         if (isNew) {
           // formDispatch(formInitialState)
         }
-        alert("Success!");
+        alert('Success!');
       }
     });
-  }
+  };
 
   return (
     <div className="w-64 p-8">
@@ -83,11 +83,11 @@ const FormHooks = ({ onSubmit, id }) => {
           type="button"
           onClick={onButtonSubmit}
         >
-          {id ? "Update" : "Create"}
+          {id ? 'Update' : 'Create'}
         </button>
       </div>
     </div>
   );
 };
 
-export default FormHooks
+export default FormHooks;

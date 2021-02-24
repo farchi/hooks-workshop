@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import List from "./List";
-import Form from "./Form";
+import List from './List';
+import Form from './Form';
 
-import { getAll } from "../../shared/api";
+import { getAll } from '../../shared/api';
 
-import "../../styles/main.css";
+import '../../styles/main.css';
 
 class App extends Component {
   constructor(props) {
@@ -25,15 +25,20 @@ class App extends Component {
     this.fetchAllItems();
   }
 
-  fetchAllItems() {
+  async fetchAllItems() {
     this.setState({ isFetching: true });
-    getAll().then((list) => {
-      this.setState({ isFetching: false, list });
-    });
+    try {
+      const items = await getAll();
+      this.setState({ list: items });
+    } finally {
+      this.setState({ isFetching: false });
+    }
   }
 
   selectItem(id) {
-    this.setState(({ selectedItemId }) => ({ selectedItemId: id === selectedItemId ? null : id }));
+    this.setState(({ selectedItemId }) => ({
+      selectedItemId: id === selectedItemId ? null : id,
+    }));
   }
 
   render() {
@@ -42,7 +47,12 @@ class App extends Component {
       <div className="flex justify-between">
         <div className="flex">
           <div className="p-8">
-            <List selectItem={this.selectItem} isFetching={isFetching} list={list} selectedItemId={selectedItemId} />
+            <List
+              selectItem={this.selectItem}
+              isFetching={isFetching}
+              list={list}
+              selectedItemId={selectedItemId}
+            />
           </div>
           <div className="p-8">
             <Form onSubmit={this.fetchAllItems} />

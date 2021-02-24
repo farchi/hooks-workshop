@@ -1,27 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import List from "./List";
+import List from './List';
 
-import { getAll } from "../../shared/api";
+import { getAll } from '../../shared/api';
 
-import "../../styles/main.css";
+import '../../styles/main.css';
 
 const App = () => {
   // const [isFetching, setIsFetching] = useState(false)
   // const [list, setList] = useState(null)
-  const [selectedItemId, setSelectedItemId] = useState(null)
+  const [selectedItemId, setSelectedItemId] = useState(null);
 
   // useEffect(() => {
   //   document.title = selectedItemId || "Nada"
   // });
 
   // useEffect(() => {
-  //   setIsFetching(true);
-  //   getAll().then((list) => {
-  //     setList(list)
-  //     setIsFetching(false)
-  //   });
-  // }, [])
+  //   const fetchAllItems = async () => {
+  //     setIsFetching(true);
+  //     try {
+  //       const items = await getAll();
+  //       setList(items);
+  //     } finally {
+  //       setIsFetching(false);
+  //     }
+  //   };
+  //   fetchAllItems();
+  // }, []);
 
   // const selectItem = (id) => {
   //   setSelectedItemId(id === selectedItemId ? null : id);
@@ -33,7 +38,7 @@ const App = () => {
         Hooks
         <div className="p-8">
           <List
-            list={list}
+            // list={list}
             // selectItem={selectItem}
             // isFetching={isFetching}
             selectedItemId={selectedItemId}
@@ -42,6 +47,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

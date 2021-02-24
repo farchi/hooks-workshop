@@ -1,7 +1,12 @@
-import React from "react";
-import { get, create, update } from "../../shared/api";
+import React from 'react';
+import { get, create, update } from '../../shared/api';
 
 class Form extends React.Component {
+  formInitialState = {
+    name: '',
+    someField: '',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,18 +18,13 @@ class Form extends React.Component {
     this.fetchSelectedItem = this.fetchSelectedItem.bind(this);
   }
 
-  formInitialState = {
-    name: "",
-    someField: "",
-  };
-
   componentDidMount() {
     if (this.props.id) {
       this.fetchSelectedItem(this.props.id);
     }
   }
 
-  componentDidUpdate(prevProps, _prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.id !== prevProps.id) {
       if (this.props.id) {
         this.fetchSelectedItem(this.props.id);
@@ -34,16 +34,9 @@ class Form extends React.Component {
     }
   }
 
-  fetchSelectedItem() {
-    this.setState({ isFetching: true });
-    get(this.props.id).then((response) => {
-      this.setState({ ...response, isFetching: false });
-    });
-  }
-
   onValueChange(event) {
-    const value = event.target.value;
-    const field = event.target.dataset.field;
+    const { value } = event.target;
+    const { field } = event.target.dataset;
     this.setState({ [field]: value });
   }
 
@@ -55,8 +48,15 @@ class Form extends React.Component {
       if (response) {
         this.props.onSubmit();
         if (isNew) this.setState(this.formInitialState);
-        alert("Success!");
+        alert('Success!');
       }
+    });
+  }
+
+  fetchSelectedItem() {
+    this.setState({ isFetching: true });
+    get(this.props.id).then((response) => {
+      this.setState({ ...response, isFetching: false });
     });
   }
 
@@ -93,7 +93,7 @@ class Form extends React.Component {
                 type="button"
                 onClick={this.onButtonSubmit}
               >
-                {this.props.id ? "Update" : "Create"}
+                {this.props.id ? 'Update' : 'Create'}
               </button>
             </div>
           </div>

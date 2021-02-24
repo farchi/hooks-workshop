@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useReducer, useRef } from "react";
-import { create,update, get } from "../../shared/api";
-import useColor from './useColor'
+import React, {
+  useState, useEffect, useReducer, useRef,
+} from 'react';
+import { create, update, get } from '../../shared/api';
+import useColor from './useColor';
 
 const formInitialState = {
-  name: "",
-  someField: "",
+  name: '',
+  someField: '',
 };
 
-const reducer = (state, values) => {
-  return { ...state, ...values }
-}
+const reducer = (state, values) => ({ ...state, ...values });
 
 const FormHooks = ({ onSubmit, id }) => {
-  const [isFetching, setIsFetching] = useState(false)
+  const [isFetching, setIsFetching] = useState(false);
   const [formState, formDispatch] = useReducer(reducer, formInitialState);
   const color = useColor();
 
@@ -25,24 +25,24 @@ const FormHooks = ({ onSubmit, id }) => {
         formDispatch({
           name: response.name,
           someField: response.someField,
-        })
-        setIsFetching(false)
-        nameInputRef.current?.focus()
+        });
+        setIsFetching(false);
+        nameInputRef.current?.focus();
       });
-    }
+    };
 
     if (id) {
       fetchSelectedItem();
     } else {
-      formDispatch(formInitialState)
+      formDispatch(formInitialState);
     }
-  },[id])
+  }, [id]);
 
   const onValueChange = (event) => {
-    const value = event.target.value;
-    const field = event.target.dataset.field;
+    const { value } = event.target;
+    const { field } = event.target.dataset;
     formDispatch({ [field]: value });
-  }
+  };
 
   if (isFetching) return <div>Loading...</div>;
 
@@ -54,12 +54,12 @@ const FormHooks = ({ onSubmit, id }) => {
       if (response) {
         onSubmit();
         if (isNew) {
-          formDispatch(formInitialState)
+          formDispatch(formInitialState);
         }
-        alert("Success!");
+        alert('Success!');
       }
     });
-  }
+  };
 
   return (
     <div className="w-64 p-8" style={{ backgroundColor: color }}>
@@ -90,11 +90,11 @@ const FormHooks = ({ onSubmit, id }) => {
           type="button"
           onClick={onButtonSubmit}
         >
-          {id ? "Update" : "Create"}
+          {id ? 'Update' : 'Create'}
         </button>
       </div>
     </div>
   );
 };
 
-export default FormHooks
+export default FormHooks;

@@ -1,12 +1,12 @@
-import React, { useState, useEffect, Component } from "react"
+import React, { useState, useEffect, Component } from 'react';
 
 export class ToDoList extends Component {
   constructor(props) {
-    super(props)
-    this.state={
+    super(props);
+    this.state = {
       list: [],
-      element: ""
-    }
+      element: '',
+    };
     this.changeElement = this.changeElement.bind(this);
     this.addElement = this.addElement.bind(this);
     this.removeElement = this.removeElement.bind(this);
@@ -14,59 +14,62 @@ export class ToDoList extends Component {
 
   // TODO add didMount and didUpdate and didUnmount
 
-  changeElement(event){
-    this.setState({element: event.target.value})
+  changeElement(event) {
+    this.setState({ element: event.target.value });
   }
 
-  addElement(){
-    if (this.state.list.includes(this.state.element)){
-      alert("This elements already exist")
-    } else{
-      this.setState((prevState) => ({list: prevState.list.concat(prevState.element), element: ""}))
+  addElement() {
+    if (this.state.list.includes(this.state.element)) {
+      alert('This elements already exist');
+    } else {
+      this.setState((prevState) => ({ list: prevState.list.concat(prevState.element), element: '' }));
     }
   }
 
-  removeElement(option){
-    this.setState((prevState) => ({ list: prevState.list.filter((element) => element != option)}))
+  removeElement(option) {
+    this.setState((prevState) => ({ list: prevState.list.filter((element) => element !== option) }));
   }
 
-  render(){
+  render() {
     return (
       <div>
         <ul>
-        {
-          this.state.list.map(element => (
-            <li key={element}>{element}<button onClick={() => this.removeElement(element)}>Remove Element</button></li>
+          {
+          this.state.list.map((element) => (
+            <li key={element}>
+              {element}
+              <button type="button" onClick={() => this.removeElement(element)}>Remove Element</button>
+            </li>
           ))
         }
-      </ul>
-      <input value={this.state.element} onChange={this.changeElement}/>
-      <button onClick={this.addElement}>Add Element</button>
+        </ul>
+        <input value={this.state.element} onChange={this.changeElement} />
+        <button type="button" onClick={this.addElement}>Add Element</button>
       </div>
-    )
+    );
   }
 }
 
-export const HooksToDo = (props) => {
-  const [list, setList] = useState([])
-  const [element, setElement] = useState("")
+export const HooksToDo = () => {
+  const [list, setList] = useState([]);
+  const [element, setElement] = useState('');
 
   const changeElement = (event) => {
-    setElement(event.target.value)
-  }
+    setElement(event.target.value);
+  };
 
   const addElement = () => {
-    if (list.includes(element)){
-      alert("This elements already exist")
-    } else{
-      setList(list.concat(element))
-      setElement("")
+    if (list.includes(element)) {
+      alert('This elements already exist');
+    } else {
+      setList(list.concat(element));
+      setElement('');
     }
-  }
+  };
 
-  const removeElement = (option) =>{
-    setList(list.filter((element) => element != option))
-  }
+  const removeElement = (option) => {
+    setList(list.filter((e) => e !== option));
+  };
 
   useEffect(() => {
     document.title = `You have ${list.length} tasks`;
@@ -78,15 +81,18 @@ export const HooksToDo = (props) => {
 
   return (
     <div>
-        <ul>
+      <ul>
         {
-          list.map(element => (
-            <li key={element}>{element}<button onClick={() => removeElement(element)}>Remove Element</button></li>
+          list.map((e) => (
+            <li key={e}>
+              {e}
+              <button type="button" onClick={() => removeElement(e)}>Remove Element</button>
+            </li>
           ))
         }
       </ul>
-      <input value={element} onChange={changeElement}/>
-      <button onClick={addElement}>Add Element</button>
+      <input value={element} onChange={changeElement} />
+      <button type="button" onClick={addElement}>Add Element</button>
     </div>
-  )
-}
+  );
+};

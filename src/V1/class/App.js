@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import List from "./List";
+import List from './List';
 
-import "../../styles/main.css";
+import '../../styles/main.css';
 
 const list = [
-  { id: 1, name: "Item1", someField: "1234" },
-  { id: 2, name: "Item2", someField: "1234" },
-]
+  { id: 1, name: 'Item1', someField: '1234' },
+  { id: 2, name: 'Item2', someField: '1234' },
+];
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   selectItem(id) {
-    this.setState({ selectedItemId: id })
+    this.setState({ selectedItemId: id });
   }
 
   render() {
@@ -33,7 +33,8 @@ class App extends Component {
             <List
               list={list}
               selectItem={this.selectItem}
-              selectedItemId={selectedItemId} />
+              selectedItemId={selectedItemId}
+            />
           </div>
         </div>
       </div>

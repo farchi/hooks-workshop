@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import * as ColorSubscriptions from "../../shared/ColorSubscriptions";
+import { useState, useEffect } from 'react';
+import * as ColorSubscriptions from '../../shared/ColorSubscriptions';
 
 // const useColor = () => {
 //   const [color, setColor] = useState(null);

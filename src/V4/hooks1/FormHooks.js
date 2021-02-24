@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { get, create, update } from "../../shared/api";
+import React, { useState, useEffect } from 'react';
+import { get, create, update } from '../../shared/api';
 
 const formInitialState = {
-  name: "",
-  someField: "",
+  name: '',
+  someField: '',
 };
 
 const FormHooks = ({ onSubmit, id }) => {
@@ -42,10 +42,10 @@ const FormHooks = ({ onSubmit, id }) => {
         //   setName(formInitialState.name);
         //   setSomeField(formInitialState.someField);
         // }
-        alert("Success!");
+        alert('Success!');
       }
     });
-  }
+  };
 
   return (
     <div className="w-64 p-8">
@@ -82,4 +82,4 @@ const FormHooks = ({ onSubmit, id }) => {
   );
 };
 
-export default FormHooks
+export default FormHooks;
