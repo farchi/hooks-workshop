@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useRef } from "react";
 import { create,update, get } from "../../shared/api";
 import useColor from './useColor'
 
@@ -15,6 +15,8 @@ const FormHooks = ({ onSubmit, id }) => {
   const [isFetching, setIsFetching] = useState(false)
   const [formState, formDispatch] = useReducer(reducer, formInitialState);
   const color = useColor();
+
+  const nameInputRef = useRef();
 
   // TODO move this after the useEffect
   // TODO loading? disable submit?
@@ -41,6 +43,7 @@ const FormHooks = ({ onSubmit, id }) => {
   },[id])
 
   // TODO should this be inside the effect? this shadows the `id` variable
+  // TODO rename this FN (fetchSelectedItem? rename id to selectedItemId?)
   const fetchCurrentElement = (id) => {
     setIsFetching(true);
     get(id).then((response) => {
@@ -49,6 +52,7 @@ const FormHooks = ({ onSubmit, id }) => {
         someField: response.someField,
       })
       setIsFetching(false)
+      nameInputRef.current?.focus()
     });
   }
 
@@ -70,6 +74,7 @@ const FormHooks = ({ onSubmit, id }) => {
           value={formState.name}
           data-field="name"
           onChange={onValueChange}
+          ref={nameInputRef}
         />
       </label>
       <label htmlFor="someField">

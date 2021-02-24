@@ -12,6 +12,8 @@ class Form extends React.Component {
     this.onValueChange = this.onValueChange.bind(this);
     this.onButtonSubmit = this.onButtonSubmit.bind(this);
     this.fetchCurrentElement = this.fetchCurrentElement.bind(this);
+
+    this.nameInputRef = React.createRef();
   }
 
   formInitialState = {
@@ -39,6 +41,7 @@ class Form extends React.Component {
     this.setState({ isFetching: true });
     get(id).then((response) => {
       this.setState({ ...response, isFetching: false });
+      this.nameInputRef.current?.focus()
     });
   }
 
@@ -76,6 +79,7 @@ class Form extends React.Component {
                 value={this.state.name}
                 data-field="name"
                 onChange={this.onValueChange}
+                ref={this.nameInputRef}
               />
             </label>
             <label htmlFor="someField">
