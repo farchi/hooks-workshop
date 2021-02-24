@@ -61,7 +61,7 @@ const FormHooks = ({ onSubmit, id }) => {
   if (isFetching) return <div>Loading...</div>;
 
   return (
-    <div className="w-64 p-8" /* style={{ backgroundColor: color }} */>
+    <div className="w-64 p-8" style={{ backgroundColor: color }}>
       <label htmlFor="name">
         Name
         <input

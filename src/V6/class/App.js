@@ -42,6 +42,7 @@ class App extends Component {
     return (
       <div className="flex justify-between">
         <div className="flex">
+          <h1 className="text-xl p-4">Class Ver</h1>
           <div className="p-8">
             <List selectItem={this.selectItem} isFetching={isFetching} list={list} selectedItemId={selectedItemId} />
           </div>

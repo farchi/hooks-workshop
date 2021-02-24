@@ -37,7 +37,7 @@ const App = () => {
   return (
     <div className="flex justify-between">
       <div className="flex">
-        Hooks
+        <h1 className="text-xl p-4">Hooks Ver</h1>
         <div className="p-8">
           <ListHooks selectItem={selectItem}
             isFetching={isFetching}
