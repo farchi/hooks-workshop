@@ -16,7 +16,7 @@ const FormHooks = ({ onSubmit, id }) => {
   const [formState, formDispatch] = useReducer(reducer, formInitialState);
   const color = useColor();
 
-  const nameInputRef = useRef();
+  // const nameInputRef = useRef();
 
   useEffect(() => {
     const fetchSelectedItem = () => {
@@ -27,7 +27,7 @@ const FormHooks = ({ onSubmit, id }) => {
           someField: response.someField,
         });
         setIsFetching(false);
-        nameInputRef.current?.focus();
+        // nameInputRef.current?.focus();
       });
     };
 
@@ -71,7 +71,7 @@ const FormHooks = ({ onSubmit, id }) => {
           value={formState.name}
           data-field="name"
           onChange={onValueChange}
-          ref={nameInputRef}
+          // ref={nameInputRef}
         />
       </label>
       <label htmlFor="someField">
