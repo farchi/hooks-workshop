@@ -19,10 +19,28 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
-    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css"
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
+    "lint": "eslint src"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "airbnb"
+    ],
+    "rules": {
+      "react/jsx-filename-extension": 0,
+      "react/prop-types": 0,
+      "react/destructuring-assignment": 0,
+      "react/jsx-props-no-spreading": 0,
+      "react/no-did-update-set-state": 0,
+      "arrow-body-style": 0,
+      "no-unused-vars": 0,
+      "no-undef": 0,
+      "jsx-a11y/click-events-have-key-events": 0,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "max-len": 0,
+      "no-alert": 0
+    }
   },
   "browserslist": {
     "production": [
@@ -37,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1",
     "tailwindcss": "^1.2.0"
   }
 }

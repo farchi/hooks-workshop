@@ -17,6 +17,8 @@ class Form extends React.Component {
     this.onValueChange = this.onValueChange.bind(this);
     this.onButtonSubmit = this.onButtonSubmit.bind(this);
     this.fetchSelectedItem = this.fetchSelectedItem.bind(this);
+
+    this.nameInputRef = React.createRef();
   }
 
   componentDidMount() {
@@ -58,6 +60,7 @@ class Form extends React.Component {
     this.setState({ isFetching: true });
     get(this.props.id).then((response) => {
       this.setState({ ...response, isFetching: false });
+      this.nameInputRef.current?.focus();
     });
   }
 
@@ -76,6 +79,7 @@ class Form extends React.Component {
                 value={this.state.name}
                 data-field="name"
                 onChange={this.onValueChange}
+                ref={this.nameInputRef}
               />
             </label>
             <label htmlFor="someField">

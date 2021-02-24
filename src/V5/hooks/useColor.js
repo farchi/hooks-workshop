@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
-import * as ColorSubscriptions from "../../shared/ColorSubscriptions";
+import { useState, useEffect } from 'react';
+import * as ColorSubscriptions from '../../shared/ColorSubscriptions';
 
 // const useColor = () => {
 //   const [color, setColor] = useState(null);
 //   useEffect(() => {
-//     const changeColor = (color) => {
-//       setColor(color);
-//     };
-//     ColorSubscriptions.subscribe(changeColor);
+//     ColorSubscriptions.subscribe(setColor);
 //     return () => {
-//       ColorSubscriptions.unsubscribe(changeColor);
+//       ColorSubscriptions.unsubscribe(setColor);
 //     };
 //   }, []);
 

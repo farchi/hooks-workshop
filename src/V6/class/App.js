@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import List from './List';
+import Form from './Form';
+import ColorPicker from '../../shared/ColorPicker';
 
 import { getAll } from '../../shared/api';
 
@@ -17,6 +19,7 @@ class App extends Component {
     };
 
     this.selectItem = this.selectItem.bind(this);
+    this.fetchAllItems = this.fetchAllItems.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +47,7 @@ class App extends Component {
     return (
       <div className="flex justify-between">
         <div className="flex">
+          <h1 className="text-xl p-4">Class Ver</h1>
           <div className="p-8">
             <List
               selectItem={this.selectItem}
@@ -52,6 +56,12 @@ class App extends Component {
               selectedItemId={selectedItemId}
             />
           </div>
+          <div className="p-8">
+            <Form id={selectedItemId} onSubmit={this.fetchAllItems} />
+          </div>
+        </div>
+        <div className="p-8">
+          <ColorPicker />
         </div>
       </div>
     );

@@ -1,7 +1,12 @@
-import React from "react";
-import { create } from "../../shared/api";
+import React from 'react';
+import { create } from '../../shared/api';
 
 class Form extends React.Component {
+  formInitialState = {
+    name: '',
+    someField: '',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -11,14 +16,9 @@ class Form extends React.Component {
     this.onButtonSubmit = this.onButtonSubmit.bind(this);
   }
 
-  formInitialState = {
-    name: "",
-    someField: "",
-  };
-
   onValueChange(event) {
-    const value = event.target.value;
-    const field = event.target.dataset.field;
+    const { value } = event.target;
+    const { field } = event.target.dataset;
     this.setState({ [field]: value });
   }
 
@@ -28,7 +28,7 @@ class Form extends React.Component {
       if (response) {
         this.props.onSubmit();
         this.setState(this.formInitialState);
-        alert("Success!");
+        alert('Success!');
       }
     });
   }

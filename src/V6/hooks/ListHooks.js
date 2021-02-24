@@ -1,10 +1,13 @@
 import React from 'react';
-import withColor from './withColor';
+import useColor from './useColor';
 
 function List(props) {
   const {
-    isFetching, list, selectedItemId, color, selectItem,
+    list, selectedItemId, selectItem, isFetching,
   } = props;
+
+  const color = useColor();
+
   if (isFetching || !list) {
     return <div className="bg-gray-200 p-4 w-48 text-center rounded">Loading...</div>;
   }
@@ -26,4 +29,4 @@ function List(props) {
   );
 }
 
-export default withColor(List);
+export default List;

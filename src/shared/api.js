@@ -8,23 +8,23 @@ function generateId() {
 let data = [
   {
     id: generateId(),
-    name: "Item1",
-    someField: "1234",
+    name: 'Item1',
+    someField: '1234',
   },
   {
     id: generateId(),
-    name: "Item2",
-    someField: "1234",
+    name: 'Item2',
+    someField: '1234',
   },
   {
     id: generateId(),
-    name: "Item3",
-    someField: "1234",
+    name: 'Item3',
+    someField: '1234',
   },
   {
     id: generateId(),
-    name: "Kappa",
-    someField: "1234",
+    name: 'Kappa',
+    someField: '1234',
   },
 ];
 
@@ -47,7 +47,7 @@ export function get(id) {
 export function create(params) {
   const id = generateId();
   data.push({
-    id: id,
+    id,
     ...params,
   });
   return new Promise((resolve) => {
@@ -58,7 +58,7 @@ export function create(params) {
 }
 
 export function update(params) {
-  let index = data.findIndex((element) => element.id === params.id);
+  const index = data.findIndex((element) => element.id === params.id);
   data[index] = { ...data[index], ...params };
   return new Promise((resolve) => {
     setTimeout(() => {
