@@ -7,6 +7,7 @@ const useColor = () => {
     const changeColor = (color) => {
       setColor(color);
     };
+    // TODO why not just pass `setColor`?
     ColorSubscriptions.subscribe(changeColor);
     return () => {
       ColorSubscriptions.unsubscribe(changeColor);

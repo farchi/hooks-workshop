@@ -16,8 +16,10 @@ const FormHooks = ({ onSubmit, id }) => {
   const [formState, formDispatch] = useReducer(reducer, formInitialState);
   const color = useColor();
 
+  // TODO move this after the useEffect
+  // TODO loading? disable submit?
   const onButtonSubmit = () => {
-    const isNew = !id;
+    const isNew = !id; // TODO move outside, use everywhere where `if (id)` or `id ?` is used
     const promise = isNew ? create(formState) : update({ ...formState, id });
     promise.then((response) => {
       if (response) {
@@ -38,6 +40,7 @@ const FormHooks = ({ onSubmit, id }) => {
     }
   },[id])
 
+  // TODO should this be inside the effect? this shadows the `id` variable
   const fetchCurrentElement = (id) => {
     setIsFetching(true);
     get(id).then((response) => {
