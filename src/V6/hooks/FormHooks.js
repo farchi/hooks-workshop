@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { create,update, get } from "../../shared/api";
-// import useColor from './useColor'
+import useColor from './useColor'
 
 const formInitialState = {
   name: "",
@@ -14,7 +14,7 @@ const reducer = (state, values) => {
 const FormHooks = ({ onSubmit, id }) => {
   const [isFetching, setIsFetching] = useState(false)
   const [formState, formDispatch] = useReducer(reducer, formInitialState);
-  // const color = useColor();
+  const color = useColor();
 
   const onButtonSubmit = () => {
     const isNew = !id;
@@ -54,9 +54,9 @@ const FormHooks = ({ onSubmit, id }) => {
     const field = event.target.dataset.field;
     formDispatch({ [field]: value });
   }
- 
+
   if (isFetching) return <div>Loading...</div>;
-  
+
   return (
     <div className="w-64 p-8" /* style={{ backgroundColor: color }} */>
       <label htmlFor="name">
