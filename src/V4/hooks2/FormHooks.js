@@ -15,23 +15,23 @@ const FormHooks = ({ onSubmit, id }) => {
   // const [formState, formDispatch] = useReducer(reducer, formInitialState);
 
   useEffect(() => {
+    const fetchSelectedItem = () => {
+      setIsFetching(true);
+      get(id).then((response) => {
+        // formDispatch({
+        //   name: response.name,
+        //   someField: response.someField,
+        // })
+        setIsFetching(false)
+      });
+    }
+
     if (id) {
-      fetchCurrentElement(id);
+      fetchSelectedItem();
     } else {
       // formDispatch(formInitialState)
     }
   },[id])
-
-  const fetchCurrentElement = (id) => {
-    setIsFetching(true);
-    get(id).then((response) => {
-      // formDispatch({
-      //   name: response.name,
-      //   someField: response.someField,
-      // })
-      setIsFetching(false)
-    });
-  }
 
   const onValueChange = (event) => {
     const value = event.target.value;

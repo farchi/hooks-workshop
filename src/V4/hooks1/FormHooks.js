@@ -12,22 +12,22 @@ const FormHooks = ({ onSubmit, id }) => {
   const [someField, setSomeField] = useState(formInitialState.someField);
 
   // useEffect(() => {
+  //   const fetchSelectedItem = () => {
+  //     setIsFetching(true);
+  //     get(id).then((response) => {
+  //       setName(response.name)
+  //       setSomeField(response.someField)
+  //       setIsFetching(false)
+  //     });
+  //   }
+  //
   //   if (id) {
-  //     fetchCurrentElement(id);
+  //     fetchSelectedItem();
   //   } else {
   //     setName(formInitialState.name)
   //     setSomeField(formInitialState.someField)
   //   }
-  // },[id])
-
-  // const fetchCurrentElement = (id) => {
-  //   setIsFetching(true);
-  //   get(id).then((response) => {
-  //     setName(response.name)
-  //     setSomeField(response.someField)
-  //     setIsFetching(false)
-  //   });
-  // }
+  // }, [id])
 
   // if (isFetching) return <div>Loading...</div>;
 

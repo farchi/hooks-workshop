@@ -19,26 +19,24 @@ const FormHooks = ({ onSubmit, id }) => {
   const nameInputRef = useRef();
 
   useEffect(() => {
+    const fetchSelectedItem = () => {
+      setIsFetching(true);
+      get(id).then((response) => {
+        formDispatch({
+          name: response.name,
+          someField: response.someField,
+        })
+        setIsFetching(false)
+        nameInputRef.current?.focus()
+      });
+    }
+
     if (id) {
-      fetchCurrentElement(id);
+      fetchSelectedItem();
     } else {
       formDispatch(formInitialState)
     }
   },[id])
-
-  // TODO should this be inside the effect? this shadows the `id` variable
-  // TODO rename this FN (fetchSelectedItem? rename id to selectedItemId?)
-  const fetchCurrentElement = (id) => {
-    setIsFetching(true);
-    get(id).then((response) => {
-      formDispatch({
-        name: response.name,
-        someField: response.someField,
-      })
-      setIsFetching(false)
-      nameInputRef.current?.focus()
-    });
-  }
 
   const onValueChange = (event) => {
     const value = event.target.value;
@@ -50,7 +48,7 @@ const FormHooks = ({ onSubmit, id }) => {
 
   // TODO loading? disable submit?
   const onButtonSubmit = () => {
-    const isNew = !id; // TODO move outside, use everywhere where `if (id)` or `id ?` is used
+    const isNew = !id;
     const promise = isNew ? create(formState) : update({ ...formState, id });
     promise.then((response) => {
       if (response) {

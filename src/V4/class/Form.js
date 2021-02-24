@@ -10,7 +10,7 @@ class Form extends React.Component {
     };
     this.onValueChange = this.onValueChange.bind(this);
     this.onButtonSubmit = this.onButtonSubmit.bind(this);
-    this.fetchCurrentElement = this.fetchCurrentElement.bind(this);
+    this.fetchSelectedItem = this.fetchSelectedItem.bind(this);
   }
 
   formInitialState = {
@@ -20,23 +20,23 @@ class Form extends React.Component {
 
   componentDidMount() {
     if (this.props.id) {
-      this.fetchCurrentElement(this.props.id);
+      this.fetchSelectedItem(this.props.id);
     }
   }
 
   componentDidUpdate(prevProps, _prevState) {
     if (this.props.id !== prevProps.id) {
       if (this.props.id) {
-        this.fetchCurrentElement(this.props.id);
+        this.fetchSelectedItem(this.props.id);
       } else {
         this.setState(this.formInitialState);
       }
     }
   }
 
-  fetchCurrentElement(id) {
+  fetchSelectedItem() {
     this.setState({ isFetching: true });
-    get(id).then((response) => {
+    get(this.props.id).then((response) => {
       this.setState({ ...response, isFetching: false });
     });
   }
