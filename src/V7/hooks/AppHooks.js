@@ -29,7 +29,7 @@ const App = () => {
 
   useEffect(() => {
     fetchAllItems();
-  }, []);
+  }, [fetchAllItems]);
 
   const selectItem = (id) => {
     setSelectedItemId(id === selectedItemId ? null : id);
