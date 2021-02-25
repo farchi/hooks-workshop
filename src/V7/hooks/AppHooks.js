@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import ListHooks from './ListHooks';
 import FormHooks from './FormHooks';
+import ColorPicker from '../../shared/ColorPicker';
 
 import { getAll } from '../../shared/api';
 
@@ -16,7 +17,7 @@ const App = () => {
     document.title = selectedItemId || 'Nada';
   });
 
-  const fetchAllItems = async () => {
+  const fetchAllItems = useCallback(async () => {
     setIsFetching(true);
     try {
       const items = await getAll();
@@ -24,7 +25,7 @@ const App = () => {
     } finally {
       setIsFetching(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchAllItems();
@@ -37,7 +38,7 @@ const App = () => {
   return (
     <div className="flex justify-between">
       <div className="flex">
-      <h1 className="text-xl p-4">Hooks Ver 4</h1>
+        <h1 className="text-xl p-4">Hooks Ver 7</h1>
         <div className="p-8">
           <ListHooks
             selectItem={selectItem}
@@ -47,8 +48,11 @@ const App = () => {
           />
         </div>
         <div className="p-8">
-          <FormHooks onSubmit={fetchAllItems} /* id={selectedItemId} */ />
+          <FormHooks onSubmit={fetchAllItems} id={selectedItemId} />
         </div>
+      </div>
+      <div className="p-8">
+        <ColorPicker />
       </div>
     </div>
   );
