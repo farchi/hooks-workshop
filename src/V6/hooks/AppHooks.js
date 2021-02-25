@@ -38,7 +38,7 @@ const App = () => {
   return (
     <div className="flex justify-between">
       <div className="flex">
-        <h1 className="text-xl p-4">Hooks Ver</h1>
+      <h1 className="text-xl p-4">Hooks Ver 6</h1>
         <div className="p-8">
           <ListHooks
             selectItem={selectItem}
