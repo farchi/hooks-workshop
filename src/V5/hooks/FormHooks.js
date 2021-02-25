@@ -56,7 +56,7 @@ const FormHooks = ({ onSubmit, id }) => {
   };
 
   return (
-    <div className="w-64 p-8">
+    <div className="w-64 p-8"  style={{ backgroundColor: color }}>
       <label htmlFor="name">
         Name
         <input

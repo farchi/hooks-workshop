@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import RefHook1 from './RefHook1';
 import RefHook2 from './RefHook2';
 import DebounceWithHooks from './DebounceWithHooks';
+import PrevProps from './PrevProps';
 
 import '../styles/main.css';
 
@@ -9,6 +10,7 @@ const examples = {
   'useRef for DOM access': RefHook1,
   'useRef for debounce': RefHook2,
   'debouncing with hooks': DebounceWithHooks,
+  'prevProps with ref': PrevProps,
 };
 
 const MoreHooksView = () => {

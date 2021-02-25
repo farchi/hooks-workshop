@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 // import App from './MoreHooksView';
 
-// import App from './V1/class/App';
+import App from './V1/class/App';
 // import App from './V1/hooks/App';
 
 // import App from './V2/class/App';
@@ -20,7 +20,7 @@ import ReactDOM from 'react-dom';
 // import App from './V5/hooks/AppHooks';
 
 // import App from './V6/class/App';
-import App from './V6/hooks/AppHooks';
+// import App from './V6/hooks/AppHooks';
 
 ReactDOM.render(
   <React.StrictMode>

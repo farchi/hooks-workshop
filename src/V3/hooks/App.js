@@ -16,15 +16,15 @@ const App = () => {
     document.title = selectedItemId || 'Nada';
   });
 
-  //   const fetchAllItems = async () => {
-  //     setIsFetching(true);
-  //     try {
-  //       const items = await getAll();
-  //       setList(items);
-  //     } finally {
-  //       setIsFetching(false);
-  //     }
-  //   };
+  // const fetchAllItems = async () => {
+  //   setIsFetching(true);
+  //   try {
+  //     const items = await getAll();
+  //     setList(items);
+  //   } finally {
+  //     setIsFetching(false);
+  //   }
+  // };
 
   // useEffect(() => {
   //   fetchAllItems();
