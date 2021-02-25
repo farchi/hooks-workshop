@@ -12,7 +12,7 @@ function List(props) {
     return <div className="bg-gray-200 p-4 w-48 text-center rounded">Loading...</div>;
   }
   return (
-    <div className="bg-gray-400 p-4 w-48 text-center rounded">
+    <div className="bg-gray-400 p-4 w-48 text-center rounded"  style={{ backgroundColor: color }}>
       {list.map((item) => (
         <div
           id={item.id}
